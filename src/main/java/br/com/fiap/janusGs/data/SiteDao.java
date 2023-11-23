@@ -15,11 +15,10 @@ public class SiteDao {
 		rs.next();
 		
 		if (rs.isAfterLast()) {
-			var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_MEDICO VALUES (?, ?, ?, ?)");
-			ps.setInt(1, site.getMedico().getIdMedico());
-			ps.setString(2, site.getMedico().getNmMedico());
-			ps.setInt(3, site.getMedico().getCrm());
-			ps.setString(4, site.getMedico().getUnidadadeFederativa());
+			var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_MEDICO VALUES (SEQ_MEDICO.NEXTVAL, ?, ?, ?)");
+			ps.setString(1, site.getMedico().getNmMedico());
+			ps.setInt(2, site.getMedico().getCrm());
+			ps.setString(3, site.getMedico().getUnidadadeFederativa());
 			ps.executeUpdate(); 
 		}
 		
@@ -29,10 +28,8 @@ public class SiteDao {
 	private static void createRemedio(Site site) throws SQLException {
 		var con = ConnectionFactory.getConnection();
 		
-		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_REMEDIO VALUES (?, ?, ?,)");
-		ps.setInt(1, site.getRemedio().getIdRemedio());
-		ps.setInt(2, site.getPaciente().getIdPaciente());
-		ps.setString(3, site.getRemedio().getNmRemedio());
+		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_REMEDIO VALUES (SEQ_REMEDIO.NEXTVAL, SEQ_PACIENTE.CURRVAL, ?)");
+		ps.setString(1, site.getRemedio().getNmRemedio());
 		var rs = ps.executeQuery();
 		rs.next();	
 		
@@ -42,12 +39,10 @@ public class SiteDao {
 	private static void createSintomas(Site site) throws SQLException {
 		var con = ConnectionFactory.getConnection();
 
-		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_SINTOMAS VALUES (?, ?, ?, ?, ?)");
-		ps.setInt(1, site.getSintomas().getIdSintoma());
-		ps.setInt(2, site.getPaciente().getIdPaciente());
-		ps.setString(3, site.getSintomas().getDsSintoma());
-		ps.setString(4, site.getSintomas().getDtInicio());
-		ps.setString(5, site.getSintomas().getDtFim());
+		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_SINTOMAS VALUES (SEQ_SINTOMAS.NEXTVAL, SEQ_PACIENTE.CURRVAL, ?, to_date(?, 'dd-mm-yyyy'), to_date(?, 'dd-mm-yyyy'))");
+		ps.setString(1, site.getSintomas().getDsSintoma());
+		ps.setString(2, site.getSintomas().getDtInicio());
+		ps.setString(3, site.getSintomas().getDtFim());
 		var rs = ps.executeQuery();
 		rs.next();	
 		
@@ -57,11 +52,8 @@ public class SiteDao {
 	private static void createConsulta(Site site) throws SQLException {
 		var con = ConnectionFactory.getConnection();
 
-		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_CONSULTA VALUES (?, ?, ?, to_date(?, 'dd-mm-yyyy')");
-		ps.setInt(1, site.getConsulta().getIdConsulta());
-		ps.setInt(2, site.getPaciente().getIdPaciente());
-		ps.setInt(3, site.getMedico().getIdMedico());
-		ps.setString(4, site.getConsulta().getDtConsulta());
+		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_CONSULTA VALUES (SEQ_CONSULTA.NEXTVAL, SEQ_PACIENTE.CURRVAL, SEQ_MEDICO.CURRVAL, to_date(?, 'dd-mm-yyyy')");
+		ps.setString(1, site.getConsulta().getDtConsulta());
 		ps.executeUpdate();
 		
 		con.close();
