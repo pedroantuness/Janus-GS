@@ -8,7 +8,7 @@ import br.com.fiap.janusGs.model.Paciente;
 public class PacienteService {
 
 	private static boolean validar(Paciente paciente) throws SQLException {
-		if(paciente.getNmCliente().length() < 3) return false;
+		if(paciente.getNmPaciente().length() < 3) return false;
 		if(paciente.getCpf().length() < 11) return false;
 		
 		return true;
@@ -50,7 +50,7 @@ public class PacienteService {
 			if(!validar(paciente)) {
 				return false;
 			}
-			if(PacienteDao.findById(paciente.getIdCliente()) == null) return false;
+			if(PacienteDao.findById(paciente.getIdPaciente()) == null) return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -1,19 +1,18 @@
 package br.com.fiap.janusGs.model;
-import java.sql.Date;
 
 public class Paciente {
-	private int idCliente;
-	private String nmCliente;
-	private Date dtNascimento;
+	private int idPaciente;
+	private String nmPaciente;
+	private String dtNascimento;
 	private String cpf;
 	private String dsEmail;
 	private int dsPeso;
 	private int dsAltura;
 
-	public Paciente(int cdCliente, String nmCliente, Date dtNascimento, String cpf, String dsEmail, int dsPeso, int dsAltura) {
+	public Paciente(int idPaciente, String nmPaciente, String dtNascimento, String cpf, String dsEmail, int dsPeso, int dsAltura) {
 		super();
-		this.idCliente = cdCliente;
-		this.nmCliente = nmCliente;
+		this.idPaciente = idPaciente;
+		this.nmPaciente = nmPaciente;
 		this.dtNascimento = dtNascimento;
 		this.cpf = cpf;
 		this.dsEmail = dsEmail;
@@ -21,9 +20,9 @@ public class Paciente {
 		this.dsAltura = dsAltura;
 	}
 	
-	public Paciente(String nmCliente, Date dtNascimento, String cpf, String dsEmail, int dsPeso, int dsAltura) {
+	public Paciente(String nmCliente, String dtNascimento, String cpf, String dsEmail, int dsPeso, int dsAltura) {
 		super();
-		this.nmCliente = nmCliente;
+		this.nmPaciente = nmCliente;
 		this.dtNascimento = dtNascimento;
 		this.cpf = cpf;
 		this.dsEmail = dsEmail;
@@ -47,27 +46,27 @@ public class Paciente {
 		this.dsAltura = dsAltura;
 	}
 	
-	public int getIdCliente() {
-		return idCliente;
+	public int getIdPaciente() {
+		return idPaciente;
 	}
 
-	public void setIdCliente(int cdCliente) {
-		this.idCliente = cdCliente;
+	public void setIdPaciente(int cdCliente) {
+		this.idPaciente = cdCliente;
 	}
 
-	public String getNmCliente() {
-		return nmCliente;
+	public String getNmPaciente() {
+		return nmPaciente;
 	}
 
-	public void setNmCliente(String nmCliente) {
-		this.nmCliente = nmCliente;
+	public void setNmPaciente(String nmCliente) {
+		this.nmPaciente = nmCliente;
 	}
 
-	public Date getDtNascimento() {
+	public String getDtNascimento() {
 		return dtNascimento;
 	}
 
-	public void setDtNascimento(Date dtNascimento) {
+	public void setDtNascimento(String dtNascimento) {
 		this.dtNascimento = dtNascimento;
 	}
 

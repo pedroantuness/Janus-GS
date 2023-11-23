@@ -20,7 +20,7 @@ public class PacienteDao {
 		Clientes.add(new Paciente(
 				    rs.getInt("ID_CLIENTE"),
 				    rs.getString("NM_CLIENTE"),
-				    rs.getDate("DT_NASCIMENTO"),
+				    rs.getString("DT_NASCIMENTO"),
 				    rs.getString("NR_CPF"),
 				    rs.getString("DS_EMAIL"),
 					rs.getInt("DS_PESO"),
@@ -47,7 +47,7 @@ public class PacienteDao {
 		var paciente = new Paciente(
 						rs.getInt("ID_CLIENTE"),
 				    	rs.getString("NM_CLIENTE"),
-				    	rs.getDate("DT_NASCIMENTO"),
+				    	rs.getString("DT_NASCIMENTO"),
 				    	rs.getString("NR_CPF"),
 				    	rs.getString("DS_EMAIL"),
 						rs.getInt("DS_PESO"),
@@ -62,9 +62,9 @@ public class PacienteDao {
 	public static void create(Paciente paciente)  throws SQLException {
 		var con = ConnectionFactory.getConnection();
 		var ps = con.prepareStatement("INSERT INTO FROM T_HOSP_JANUS_PACIENTE (ID_CLIENTE, NM_CLIENTE, DT_NASCIMENTO, NR_CPF, DS_EMAIL, DS_PESO, DS_ALTURA) VALUES (?, ?, ?, ?, ?, ?, ?)");
-		ps.setInt(1, paciente.getIdCliente());
-		ps.setString(2, paciente.getNmCliente());
-		ps.setDate(3, paciente.getDtNascimento());
+		ps.setInt(1, paciente.getIdPaciente());
+		ps.setString(2, paciente.getNmPaciente());
+		ps.setString(3, paciente.getDtNascimento());
 		ps.setString(4, paciente.getCpf());
 		ps.setString(5, paciente.getDsEmail());
 		ps.setInt(6, paciente.getDsPeso());
@@ -78,13 +78,13 @@ public class PacienteDao {
 	public static void update(Paciente paciente) throws SQLException {
 		var con = ConnectionFactory.getConnection();
 		var ps = con.prepareStatement("UPDATE T_HOSP_JANUS_PACIENTE SET NM_CLIENTE=?, DT_NASCIMENTO=?, NR_CPF=?, DS_EMAIL=?, DS_PESO=?, DS_ALTURA=? WHERE ID_CLIENTE=?");
-		ps.setString(1, paciente.getNmCliente());
-		ps.setDate(2, paciente.getDtNascimento());
+		ps.setString(1, paciente.getNmPaciente());
+		ps.setString(2, paciente.getDtNascimento());
 		ps.setString(3, paciente.getCpf());
 		ps.setString(4, paciente.getDsEmail());
 		ps.setInt(5, paciente.getDsPeso());
 		ps.setInt(6, paciente.getDsAltura());
-		ps.setInt(7, paciente.getIdCliente());
+		ps.setInt(7, paciente.getIdPaciente());
 		
 		ps.executeUpdate();
 		con.close();		
@@ -93,7 +93,7 @@ public class PacienteDao {
 	 public static void delete(Paciente id) throws SQLException {
 	        var con = ConnectionFactory.getConnection();
 	        var ps = con.prepareStatement("DELETE FROM T_HOSP_JANUS_PACIENTE WHERE ID_CLIENTE=?");
-	        ps.setInt(1, id.getIdCliente());
+	        ps.setInt(1, id.getIdPaciente());
 	        ps.executeUpdate();
 	        con.close();
 	    }

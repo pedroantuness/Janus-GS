@@ -1,13 +1,11 @@
 package br.com.fiap.janusGs.model;
 
-import java.sql.Date;
-
 public class Consulta {
 	
 	private int idConsulta;
-	private Date dtConsulta;
+	private String dtConsulta;
 
-	public Consulta(int idConsulta, Date dtConsulta) {
+	public Consulta(int idConsulta, String dtConsulta) {
 		super();
 		this.idConsulta = idConsulta;
 		this.dtConsulta = dtConsulta;
@@ -21,11 +19,11 @@ public class Consulta {
 		this.idConsulta = idConsulta;
 	}
 
-	public Date getDtConsulta() {
+	public String getDtConsulta() {
 		return dtConsulta;
 	}
 	
-	public void setDtConsulta(Date dtConsulta) {
+	public void setDtConsulta(String dtConsulta) {
 		this.dtConsulta = dtConsulta;
 	}
 

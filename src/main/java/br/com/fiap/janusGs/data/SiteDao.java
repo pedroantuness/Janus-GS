@@ -31,10 +31,10 @@ public class SiteDao {
 		
 		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_REMEDIO VALUES (?, ?, ?, ?, ?, ?)");
 		ps.setInt(1, site.getRemedio().getIdRemedio());
-		ps.setInt(2, site.getPaciente().getIdCliente());
+		ps.setInt(2, site.getPaciente().getIdPaciente());
 		ps.setString(3, site.getRemedio().getNmRemedio());
-		ps.setDate(4, site.getRemedio().getDtInicio());
-		ps.setDate(5, site.getRemedio().getDtFim());
+		ps.setString(4, site.getRemedio().getDtInicio());
+		ps.setString(5, site.getRemedio().getDtFim());
 		ps.setInt(6, site.getRemedio().getIntervalo());
 		var rs = ps.executeQuery();
 		rs.next();	
@@ -47,10 +47,10 @@ public class SiteDao {
 
 		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_SINTOMAS VALUES (?, ?, ?, ?, ?)");
 		ps.setInt(1, site.getSintomas().getIdSintoma());
-		ps.setInt(2, site.getPaciente().getIdCliente());
+		ps.setInt(2, site.getPaciente().getIdPaciente());
 		ps.setString(3, site.getSintomas().getDsSintoma());
-		ps.setDate(4, site.getSintomas().getDtInicio());
-		ps.setDate(5, site.getSintomas().getDtFim());
+		ps.setString(4, site.getSintomas().getDtInicio());
+		ps.setString(5, site.getSintomas().getDtFim());
 		var rs = ps.executeQuery();
 		rs.next();	
 		
@@ -62,9 +62,9 @@ public class SiteDao {
 
 		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_CONSULTA VALUES (?, ?, ?, ?)");
 		ps.setInt(1, site.getConsulta().getIdConsulta());
-		ps.setInt(2, site.getPaciente().getIdCliente());
+		ps.setInt(2, site.getPaciente().getIdPaciente());
 		ps.setInt(3, site.getMedico().getIdMedico());
-		ps.setDate(4, site.getConsulta().getDtConsulta());
+		ps.setString(4, site.getConsulta().getDtConsulta());
 		ps.executeUpdate();
 		
 		con.close();

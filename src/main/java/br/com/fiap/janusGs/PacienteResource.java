@@ -56,7 +56,7 @@ public class PacienteResource {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response update(@PathParam("id") int id, Paciente paciente) {
-		paciente.setIdCliente(id);
+		paciente.setIdPaciente(id);
 		if(!PacienteService.update(paciente)) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}

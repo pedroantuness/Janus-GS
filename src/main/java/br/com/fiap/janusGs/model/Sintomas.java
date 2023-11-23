@@ -1,15 +1,12 @@
 package br.com.fiap.janusGs.model;
 
-import java.sql.Date;
-
-
 public class Sintomas {
 	private int idSintoma;
 	private String dsSintoma;
-	private Date dtInicio;
-	private Date dtFim;
+	private String dtInicio;
+	private String dtFim;
 
-	public Sintomas(int idSintoma, String dsSintoma, Date dtInicio, Date dtFim) {
+	public Sintomas(int idSintoma, String dsSintoma, String dtInicio, String dtFim) {
 		super();
 		this.idSintoma = idSintoma;
 		this.dsSintoma = dsSintoma;
@@ -33,19 +30,19 @@ public class Sintomas {
 		this.dsSintoma = dsSintoma;
 	}
 
-	public Date getDtInicio() {
+	public String getDtInicio() {
 		return dtInicio;
 	}
 
-	public void setDtInicio(Date dtInicio) {
+	public void setDtInicio(String dtInicio) {
 		this.dtInicio = dtInicio;
 	}
 
-	public Date getDtFim() {
+	public String getDtFim() {
 		return dtFim;
 	}
 
-	public void setDtFim(Date dtFim) {
+	public void setDtFim(String dtFim) {
 		this.dtFim = dtFim;
 	}
 	 
