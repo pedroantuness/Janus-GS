@@ -20,16 +20,6 @@ public class Paciente {
 		this.dsAltura = dsAltura;
 	}
 	
-	public Paciente(String nmCliente, String dtNascimento, String cpf, String dsEmail, int dsPeso, int dsAltura) {
-		super();
-		this.nmPaciente = nmCliente;
-		this.dtNascimento = dtNascimento;
-		this.cpf = cpf;
-		this.dsEmail = dsEmail;
-		this.dsPeso = dsPeso;
-		this.dsAltura = dsAltura;
-	}
-
 	public int getDsPeso() {
 		return dsPeso;
 	}

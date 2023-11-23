@@ -17,8 +17,6 @@ public class Remedio {
 		this.intervalo = intervalo;
 	}
 	
-
-	
 	public int getIdRemedio() {
 		return idRemedio;
 	}

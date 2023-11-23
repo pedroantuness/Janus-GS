@@ -29,13 +29,10 @@ public class SiteDao {
 	private static void createRemedio(Site site) throws SQLException {
 		var con = ConnectionFactory.getConnection();
 		
-		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_REMEDIO VALUES (?, ?, ?, ?, ?, ?)");
+		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_REMEDIO VALUES (?, ?, ?,)");
 		ps.setInt(1, site.getRemedio().getIdRemedio());
 		ps.setInt(2, site.getPaciente().getIdPaciente());
 		ps.setString(3, site.getRemedio().getNmRemedio());
-		ps.setString(4, site.getRemedio().getDtInicio());
-		ps.setString(5, site.getRemedio().getDtFim());
-		ps.setInt(6, site.getRemedio().getIntervalo());
 		var rs = ps.executeQuery();
 		rs.next();	
 		
@@ -60,7 +57,7 @@ public class SiteDao {
 	private static void createConsulta(Site site) throws SQLException {
 		var con = ConnectionFactory.getConnection();
 
-		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_CONSULTA VALUES (?, ?, ?, ?)");
+		var ps = con.prepareStatement("INSERT INTO T_HOSP_JANUS_CONSULTA VALUES (?, ?, ?, to_date(?, 'dd-mm-yyyy')");
 		ps.setInt(1, site.getConsulta().getIdConsulta());
 		ps.setInt(2, site.getPaciente().getIdPaciente());
 		ps.setInt(3, site.getMedico().getIdMedico());
